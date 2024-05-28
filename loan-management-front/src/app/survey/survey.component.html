@@ -1,0 +1,260 @@
+<div class="registration-form">
+  <form [formGroup]="loanForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+    <h4>Overview</h4>
+    <div class="form-group">
+      <label class="block mb-2 text-sm font-medium">Loan Purpose</label>
+      <select
+        formControlName="loan_purpose"
+        #loan_purpose
+        name="loan_purpose"
+        class="form-control item"
+      >
+        <option selected value="house_purchase">House Purchase</option>
+        <option value="car_purchase">Car Purchase</option>
+        <option value="hajj">Hajj or Umrah</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <div class="form-check form-switch">
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Is there a guarantor for this application?</label
+        >
+        <input
+          formControlName="guarantor"
+          #guarantor
+          name="guarantor"
+          class="form-check-input"
+          type="checkbox"
+        />
+      </div>
+    </div>
+
+    <h4>Personal Info</h4>
+    <!--Name-->
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="first_name"
+          #first_name
+          name="first_name"
+          type="text"
+          class="form-control item"
+          placeholder="First Name"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="last_name"
+          #last_name
+          name="last_name"
+          type="text"
+          class="form-control item"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+
+    <!--phone and cin-->
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="cin"
+          #cin
+          name="cin"
+          type="number"
+          class="form-control item"
+          placeholder="CIN"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="phone"
+          #phone
+          name="phone"
+          type="number"
+          class="form-control item"
+          placeholder="Phone"
+        />
+      </div>
+    </div>
+
+    <!--birth-->
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="birthdate"
+          #birthdate
+          name="birthdate"
+          type="date"
+          class="form-control item"
+          placeholder="Bith Date"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="birthplace"
+          #birthplace
+          name="birthplace"
+          type="text"
+          class="form-control item"
+          placeholder="Birth Place"
+        />
+      </div>
+    </div>
+
+    <!--address-->
+    <div class="form-group">
+      <input
+        formControlName="applicant_street_address"
+        #applicant_street_address
+        name="applicant_street_address"
+        type="text"
+        class="form-control item"
+        placeholder="Street Address"
+      />
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="applicant_city"
+          #applicant_city
+          name="applicant_city"
+          type="text"
+          class="form-control item"
+          placeholder="City"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="applicant_zip"
+          #applicant_zip
+          name="applicant_zip"
+          type="number"
+          class="form-control item"
+          placeholder="ZIP"
+        />
+      </div>
+    </div>
+
+    <!--Employer-->
+    <h4>Employment Details</h4>
+    <div class="form-group">
+      <input
+        formControlName="basic_salary"
+        #basic_salary
+        name="basic_salary"
+        type="number"
+        class="form-control item"
+        placeholder="Basic Salary in DT"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formFile" class="form-label"
+        >Employment Verification Letter</label
+      >
+      <input
+        id="formFile"
+        (change)="onFileSelected($event)"
+        name="employment_verification_letter"
+        type="file"
+        class="form-control"
+      />
+    </div>
+
+    <!--Property to be mortgaged-->
+    <h4>Property to be mortgaged</h4>
+    <div class="form-group">
+      <input
+        formControlName="mortgage_street_address"
+        #mortgage_street_address
+        name="mortgage_street_address"
+        type="text"
+        class="form-control item"
+        placeholder="Mortgage Street Address"
+      />
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="mortgage_city"
+          #mortgage_city
+          name="mortgage_city"
+          type="text"
+          class="form-control item"
+          placeholder="City"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="mortgage_zip"
+          #mortgage_zip
+          name="mortgage_zip"
+          type="number"
+          class="form-control item"
+          placeholder="ZIP"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check form-switch">
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Will the property be used for business purposes?</label
+        >
+        <input
+          formControlName="used_for_business"
+          #used_for_business
+          name="used_for_business"
+          class="form-check-input"
+          type="checkbox"
+        />
+      </div>
+    </div>
+    <br>
+
+    <!--Requested Loan Details-->
+    <h4>Requested Loan Details</h4>
+    <div class="row">
+      <div class="col form-group">
+        <input
+          formControlName="loan_amount"
+          #loan_amount
+          name="loan_amount"
+          type="number"
+          class="form-control item"
+          placeholder="Amount in DT"
+        />
+      </div>
+      <div class="col form-group">
+        <input
+          formControlName="loan_tenure"
+          #loan_tenure
+          name="loan_tenure"
+          type="number"
+          class="form-control item"
+          placeholder="Loan Tenure in years"
+        />
+      </div>
+    </div>
+
+    <!--Submit button-->
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-block create-account"
+        [disabled]="!loanForm.valid"
+        [ngClass]="{ 'button-disabled': loanForm.invalid }"
+      >
+        Submit
+      </button>
+    </div>
+
+    <!--error msg-->
+    <div *ngIf="errorMsg" class="mt-2 alert alert-danger item" role="alert">
+      {{ errorMsg }}
+    </div>
+
+  </form>
+</div>
